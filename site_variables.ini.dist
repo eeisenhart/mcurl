@@ -1,0 +1,9 @@
+[site_variables]
+DB_PREFIX : mdl_
+NUM_COURSES : 5000
+NUM_INSTRUCTORS : 1000
+NUM_STUDENTS : 100000
+TERM_FIELD : shortname
+TERM_EXPRESSION : ''
+FACULTY_ROLE : editingteacher
+STUDENT_ROLE : student
