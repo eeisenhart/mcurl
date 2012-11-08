@@ -18,7 +18,7 @@ FROM
         JOIN
     DB_PREFIX_role r ON (ra.roleid = r.id)
 WHERE
-    c.TERMFIELD LIKE 'TERM_EXPRESSION'
+    c.TERM_FIELD LIKE 'TERM_EXPRESSION'
         AND c.visible = 1
         AND ue.status = 0
         AND r.shortname = 'STUDENT_ROLE'
