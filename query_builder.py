@@ -12,7 +12,7 @@ from ConfigParser import ConfigParser
 # ***********************************
 
 PARENT_DIR = os.path.dirname(os.path.realpath(__file__))
-QUERY_DIR = os.path.join(PARENT_DIR, "queries")
+QUERY_DIR = os.path.join(PARENT_DIR, "templates")
 
 if len(sys.argv) <= 1:
   INI = "site_variables.ini"

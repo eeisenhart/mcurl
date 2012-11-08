@@ -1,6 +1,2 @@
-INSTALL.txt
-LICENSE.txt
-README.txt
-demos/
-extras/documentation
 site_variables.ini
+my_queries/*
