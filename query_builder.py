@@ -38,7 +38,7 @@ OUTPUT_DIR = os.path.join(PARENT_DIR, OUTPUT_DIR + '_' + TIME_STAMP)
 
 print "Writing Queries to: " + OUTPUT_DIR
 
-os.mkdir(OUTPUT_DIR)
+os.makedirs(OUTPUT_DIR)
 
 if VERSION == 'moodle1':
   QUERY_DIR = os.path.join(QUERY_DIR, 'moodle1')
