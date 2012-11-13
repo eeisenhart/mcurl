@@ -13,4 +13,4 @@ FROM
     WHERE
         DB_PREFIX_course.TERM_FIELD LIKE 'TERM_EXPRESSION'
     GROUP BY DB_PREFIX_course.shortname
-    HAVING CC > 50) CNT;
+    HAVING CC > 50) CNT

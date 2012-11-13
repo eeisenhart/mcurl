@@ -15,4 +15,3 @@ FROM
             AND c.visible = 1
     GROUP BY c.shortname
     HAVING COUNT(*) > 1) AS cc
-
