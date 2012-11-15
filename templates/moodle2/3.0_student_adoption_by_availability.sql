@@ -3,7 +3,7 @@ SET @TOTAL = NUM_STUDENTS;
 SELECT 
     COUNT(DISTINCT (ue.userid)) AS 'Student Count',
     @TOTAL AS 'Student Total',
-    CAST(COUNT(DISTINCT (ue.userid)) / @TOTAL AS DECIMAL (2 , 2 )) AS 'Student Percent'
+    ROUND(COUNT(DISTINCT (ue.userid)) / @TOTAL * 100) AS 'Student Percent'
 FROM
     DB_PREFIX_user_enrolments ue
         JOIN
