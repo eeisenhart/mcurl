@@ -11,3 +11,4 @@ TERM_FIELD : shortname
 TERM_EXPRESSION : %-2128
 FACULTY_ROLE : editinginstructor
 STUDENT_ROLE : student
+DEPT_QUERY : substring_index(TERM_FIELD,'-',1)
