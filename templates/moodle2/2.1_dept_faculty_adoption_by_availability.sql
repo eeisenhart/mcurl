@@ -18,7 +18,7 @@ WHERE
     c.TERM_FIELD LIKE 'TERM_EXPRESSION'
         AND c.visible = 1
         AND ue.status = 0
-        AND r.shortname = 'FACULTY_ROLE'
+        AND ra.shortname = 'FACULTY_ROLE'
         AND ct.contextlevel = 50
 GROUP BY
     DEPT_QUERY

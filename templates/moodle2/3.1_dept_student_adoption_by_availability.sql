@@ -20,7 +20,7 @@ WHERE
     c.TERM_FIELD LIKE 'TERM_EXPRESSION'
         AND c.visible = 1
         AND ue.status = 0
-        AND r.shortname = 'STUDENT_ROLE'
+        AND ra.shortname = 'STUDENT_ROLE'
         AND ct.contextlevel = 50
 GROUP BY
     DEPT_QUERY
