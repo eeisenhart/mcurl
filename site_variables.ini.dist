@@ -11,3 +11,4 @@ TERM_FIELD : shortname
 TERM_EXPRESSION : %-2128
 FACULTY_ROLE : editinginstructor
 STUDENT_ROLE : student
+TERM_START : 1354746819
