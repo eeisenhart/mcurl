@@ -1,4 +1,5 @@
 SET @TOTAL = NUM_COURSES;
+ -- SET @TOTAL = (select count(*) from DB_PREFIX_course where TERM_FIELD like 'TERM_EXPRESSION');
 
 SELECT 
     COUNT(*) AS 'Course Count by Populated',
