@@ -2,9 +2,9 @@ SET @TOTAL = NUM_COURSES;
  -- SET @TOTAL = (select count(*) from DB_PREFIX_course where TERM_FIELD like 'TERM_EXPRESSION');
 
 SELECT 
-    COUNT(*) AS 'Course Count by Populated',
-    @TOTAL AS 'Course Total',
-    ROUND(COUNT(*) / @TOTAL * 100) AS 'Course Percent'
+    COUNT(*) AS 'Visible course sections with content',
+    @TOTAL AS 'Total course sections',
+    ROUND(COUNT(*) / @TOTAL * 100) AS 'Percent of total'
 FROM
     (SELECT 
         COUNT(*)
@@ -13,6 +13,6 @@ FROM
     JOIN DB_PREFIX_course_modules cm ON (cm.course = c.id)
     WHERE
         c.TERM_FIELD LIKE 'TERM_EXPRESSION'
-            AND c.visible = 1
+        AND c.visible = 1
     GROUP BY c.shortname
-    HAVING COUNT(*) > 1) AS cc
+    HAVING COUNT(*) > DEFAULT_NUM_MODULES) AS cc

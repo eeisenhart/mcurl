@@ -1,9 +1,9 @@
 SET @TOTAL = NUM_FACULTY;
 
 SELECT 
-    COUNT(DISTINCT (ue.userid)) AS 'Faculty Count',
-    @TOTAL AS 'Faculty Total',
-    ROUND(COUNT(DISTINCT (ue.userid)) / @TOTAL * 100) AS 'Faculty Percent'
+    COUNT(DISTINCT (ue.userid)) AS 'Instructors teaching more than 1 visible course section',
+    @TOTAL AS 'Total number of instructors',
+    ROUND(COUNT(DISTINCT (ue.userid)) / @TOTAL * 100) AS 'Percent of total'
 FROM
     DB_PREFIX_user_enrolments ue
         JOIN
