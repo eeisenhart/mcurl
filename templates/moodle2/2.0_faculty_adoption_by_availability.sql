@@ -1,4 +1,5 @@
 SET @TOTAL = NUM_FACULTY;
+-- SET @TOTAL = (select count(*) from DB_PREFIX_course where TERM_FIELD like 'TERM_EXPRESSION');
 
 SELECT 
     COUNT(DISTINCT (ue.userid)) AS 'Instructors teaching more than 1 visible course section',

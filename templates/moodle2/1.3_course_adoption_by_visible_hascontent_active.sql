@@ -1,17 +1,17 @@
 SET @TOTAL = NUM_COURSES;
- -- SET @TOTAL = (select count(*) from DB_PREFIX_course where shortname like '%-2132');
+ -- SET @TOTAL = (select count(*) from DB_PREFIX_course where TERM_FIELD like 'TERM_EXPRESSION');
 
 SELECT 
-    COUNT(DISTINCT CNT.shortname) AS 'Visible course sections with activity',
+    COUNT(DISTINCT CNT.shortname) AS 'Visible course sections with content and activity',
 	@TOTAL AS 'Total course sections',
 	ROUND(COUNT(DISTINCT CNT.shortname) / @TOTAL * 100) AS 'Percent of total'
  -- Get courses that are visible and have activity this term
 FROM
     (SELECT 
-        c.shortname, COUNT(DB_PREFIX_log.id) CC
+        c.shortname, COUNT(ml.id) CC
     FROM
         DB_PREFIX_log ml
-    JOIN mdl_course c ON (DB_PREFIX_log.course = c.id)
+    JOIN mdl_course c ON (ml.course = c.id)
     WHERE
         c.TERM_FIELD LIKE 'TERM_EXPRESSION'
         AND c.visible = 1
