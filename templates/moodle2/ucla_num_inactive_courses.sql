@@ -6,7 +6,7 @@
 #
 # Do not include guest users (should be userid 1)
 
-SET @TIMESTAMP = TERM_START;
+SET @TIMESTAMP = unix_timestamp('TERM_START_DATE');
 
 SELECT
 	COUNT(c.id)
