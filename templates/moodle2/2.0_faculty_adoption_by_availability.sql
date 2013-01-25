@@ -1,8 +1,7 @@
 SET @TOTAL = NUM_FACULTY;
--- SET @TOTAL = (select count(*) from DB_PREFIX_course where TERM_FIELD like 'TERM_EXPRESSION');
 
 SELECT 
-    COUNT(DISTINCT (ue.userid)) AS 'Instructors teaching more than 1 visible course section',
+    COUNT(DISTINCT (ue.userid)) AS 'Instructors teaching at least 1 visible course section',
     @TOTAL AS 'Total number of instructors',
     ROUND(COUNT(DISTINCT (ue.userid)) / @TOTAL * 100) AS 'Percent of total'
 FROM
