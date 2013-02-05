@@ -4,7 +4,7 @@ SET @TOTAL = NUM_COURSES;
 SELECT 
     COUNT(*) AS 'Visible course sections',
     @TOTAL AS 'Total course sections',
-    ROUND(COUNT(*) / @TOTAL * 100) AS 'Percent of total'
+    ROUND(COUNT(*) / @TOTAL * 100,1) AS 'Percent of total'
 FROM
     DB_PREFIX_course
 WHERE

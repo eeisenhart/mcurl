@@ -3,8 +3,8 @@ SET @TOTAL = NUM_COURSES;
 
 SELECT 
     COUNT(DISTINCT CNT.shortname) AS 'Visible course sections with content and activity',
-	@TOTAL AS 'Total course sections',
-	ROUND(COUNT(DISTINCT CNT.shortname) / @TOTAL * 100) AS 'Percent of total'
+    @TOTAL AS 'Total course sections',
+    ROUND(COUNT(DISTINCT CNT.shortname) / @TOTAL * 100,1) AS 'Percent of total'
  -- Get courses that are visible and have activity this term
 FROM
     (SELECT 
