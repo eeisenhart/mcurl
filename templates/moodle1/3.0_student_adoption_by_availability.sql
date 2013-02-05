@@ -1,9 +1,9 @@
 SET @TOTAL = NUM_STUDENTS;
 
 SELECT
-     COUNT(DISTINCT (ue.userid)) AS 'Students enrolled in at least 1 visible course',
+     COUNT(DISTINCT (ra.userid)) AS 'Students enrolled in at least 1 visible course',
      @TOTAL AS 'Total number of students',
-     ROUND(COUNT(DISTINCT (ue.userid)) / @TOTAL * 100,1) AS 'Percent of total'
+     ROUND(COUNT(DISTINCT (ra.userid)) / @TOTAL * 100,1) AS 'Percent of total'
 FROM
      DB_PREFIX_course c
          JOIN
