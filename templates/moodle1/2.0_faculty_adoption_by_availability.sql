@@ -1,9 +1,10 @@
 SET @TOTAL = NUM_FACULTY;
 
 SELECT
-     COUNT(DISTINCT (ra.userid)) AS 'Instructors teaching at least 1 visible course section',
-     @TOTAL AS 'Total number of instructors',
-     ROUND(COUNT(DISTINCT (ra.userid)) / @TOTAL * 100,1) AS 'Percent of total'
+     COUNT(DISTINCT (ra.userid)) AS 'Faculty Count',
+     @TOTAL AS 'Faculty Total',
+     CAST(COUNT(DISTINCT (ra.userid)) / @TOTAL AS DECIMAL (2 , 2 )) AS
+'Faculty Percent'
 FROM
      DB_PREFIX_course  c
          JOIN

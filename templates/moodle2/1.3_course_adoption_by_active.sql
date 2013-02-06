@@ -3,7 +3,7 @@ SET @TOTAL = NUM_COURSES;
 SELECT 
     COUNT(*) as 'Course Count with Activity',
 	@TOTAL AS 'Course Total',
-    CAST( COUNT(*) / @TOTAL AS DECIMAL(2,2)) AS 'Course Percent'
+    ROUND(COUNT(*) / @TOTAL * 100) AS 'Course Percent'
 FROM
     (SELECT 
         DB_PREFIX_course.shortname, COUNT(DB_PREFIX_log.id) CC

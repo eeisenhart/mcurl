@@ -15,6 +15,9 @@ FROM
     WHERE
         c.TERM_FIELD LIKE 'TERM_EXPRESSION'
         AND c.visible = 1
+        -- only count activity during the specified term.
+        AND ml.time > unix_timestamp('TERM_START_DATE')
+        AND ml.time < unix_timestamp('TERM_END_DATE')
         
     GROUP BY c.shortname
     HAVING CC > 50) CNT
