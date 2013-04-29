@@ -4,7 +4,8 @@
 SELECT
     substring_index(c.idnumber,'-',1) as 'Department',
     count(*) as 'Course Count by Dept',
-    sum(visible) as 'Available'
+    sum(visible) as 'Available',
+    ROUND(sum(visible) / count(*) * 100,1) AS 'Percent'
 FROM
     DB_PREFIX_course c
 WHERE TERM_FIELD LIKE 'TERM_EXPRESSION'
