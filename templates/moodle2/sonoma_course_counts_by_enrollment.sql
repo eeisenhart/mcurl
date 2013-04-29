@@ -1,6 +1,6 @@
--- $Id: sonoma_course_counts_by_enrollment.sql,v 1.2 2013/04/16 22:54:50 eric Exp $
+-- $Id: sonoma_course_counts_by_enrollment.sql,v 1.3 2013/04/29 23:40:31 root Exp $
 SELECT   Category,   
-         count(*) AS 'Total Courses,
+         count(*) AS 'Total Courses',
          sum(VIS) as Available,
          ROUND((sum(VIS)/count(*))*100,1) as Percent
 FROM
