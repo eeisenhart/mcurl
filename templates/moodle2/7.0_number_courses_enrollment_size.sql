@@ -1,4 +1,4 @@
--- $Id: sonoma_course_counts_by_enrollment.sql,v 1.3 2013/04/29 23:40:31 root Exp $
+-- $Id: 7.0_number_courses_enrollment_size.sql,v 1.1 2013/04/30 18:36:33 eric Exp $
 SELECT   Category,   
          count(*) AS 'Total Courses',
          sum(VIS) as Available,
