@@ -1,4 +1,4 @@
--- $Id: 7.0_number_courses_enrollment_size.sql,v 1.1 2013/04/30 18:36:33 eric Exp $
+-- $Id: 7.0_number_courses_enrollment_size.sql,v 1.2 2013/05/15 23:26:18 root Exp $
 SELECT   Category,   
          count(*) AS 'Total Courses',
          sum(VIS) as Available,
@@ -22,7 +22,7 @@ FROM
    DB_PREFIX_course c
 where  t.id = a.contextid
   and  c.id = t.instanceid           
-  and  a.roleid = '9'          /*student */
+  and  a.roleid = (select id from mdl_role where shortname='student')
   and  c.TERM_FIELD LIKE 'TERM_EXPRESSION'
 GROUP BY c.TERM_FIELD, c.visible) SUB
 GROUP BY CATEGORY;
