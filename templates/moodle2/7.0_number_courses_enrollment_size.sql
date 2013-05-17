@@ -22,7 +22,7 @@ FROM
    DB_PREFIX_course c
 where  t.id = a.contextid
   and  c.id = t.instanceid           
-  and  a.roleid = '9'          /*student */
+  and  a.roleid = (select id from mdl_role where shortname='student')
   and  c.TERM_FIELD LIKE 'TERM_EXPRESSION'
 GROUP BY c.TERM_FIELD, c.visible) SUB
 GROUP BY CATEGORY;
