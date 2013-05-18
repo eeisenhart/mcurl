@@ -1,3 +1,5 @@
+-- This query requires create temporary table permissions.
+-- Testing on a large active site execution took 3 minutes.
 SET @TOTAL = NUM_COURSES;
 set @NUMLOG = LOG_ENTRIES_STUDENT;
  -- SET @TOTAL = (select count(*) from DB_PREFIX_course where TERM_FIELD like 'TERM_EXPRESSION');
