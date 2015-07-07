@@ -86,7 +86,7 @@ SELECT c.id as NEWID, count(p.id) as newsposts  FROM DB_PREFIX_forum_posts p INN
 
 -- mcurl all info curl
 -- if you created mcurl before, you'll need to drop first.
--- drop table mcurl;
+drop table if exists mcurl;
 create table mcurl as select M.*, mcu.usercount as CourseUserCount, ma.activities, r.Resources,  la.LearningActivities, gi.gradeitems,ni.newsposts from
 mcurl_core  M 
 left join ma on ma.course = M.id
