@@ -1,23 +1,5 @@
--- This query requires create temporary table permissions.
--- Testing on a large active site execution took 3 minutes.
 SET @TOTAL = NUM_COURSES;
-set @NUMLOG = LOG_ENTRIES_STUDENT;
  -- SET @TOTAL = (select count(*) from DB_PREFIX_course where TERM_FIELD like 'TERM_EXPRESSION');
-
-
--- create helper table
-create temporary table mcurl_users  as
-SELECT DB_PREFIX_course.id, COUNT(DB_PREFIX_role_assignments.id) usercount
-        FROM
-        DB_PREFIX_role_assignments INNER JOIN DB_PREFIX_context
-        ON ( DB_PREFIX_role_assignments.contextid = DB_PREFIX_context.id) INNER JOIN DB_PREFIX_course
-        ON ( DB_PREFIX_context.instanceid = DB_PREFIX_course.id) INNER JOIN DB_PREFIX_role
-        ON ( DB_PREFIX_role_assignments.roleid = DB_PREFIX_role.id)
-WHERE
-    DB_PREFIX_course.TERM_FIELD LIKE 'TERM_EXPRESSION'
-AND DB_PREFIX_role.shortname = 'STUDENT_ROLE'
-GROUP BY DB_PREFIX_course.id ;
-
 
 SELECT
     COUNT(DISTINCT CNT.shortname) AS 'Visible course sections with content and activity',
@@ -26,11 +8,10 @@ SELECT
  -- Get courses that are visible and have activity this term
 FROM
     (SELECT
-        c.shortname, COUNT(ml.id) CC, mcurl_users.usercount UC
+        c.shortname, COUNT(ml.id) CC
     FROM
         DB_PREFIX_log ml
-    JOIN DB_PREFIX_course c ON (ml.course = c.id)
-    JOIN mcurl_users  ON (ml.course = mcurl_users.id)
+    JOIN mdl_course c ON (ml.course = c.id)
     WHERE
         c.TERM_FIELD LIKE 'TERM_EXPRESSION'
         AND c.visible = 1
@@ -39,7 +20,7 @@ FROM
         AND ml.time < unix_timestamp('TERM_END_DATE')
 
     GROUP BY c.shortname
-    HAVING ((CC/UC)>@NUMLOG) ) CNT
+    HAVING CC > 50) CNT
  -- Join with courses that are visible and have content
 JOIN
     (SELECT
@@ -52,4 +33,4 @@ JOIN
         AND c.visible = 1
     GROUP BY c.shortname
     HAVING COUNT(*) > DEFAULT_NUM_MODULES) CC
-ON (CNT.shortname = CC.shortname); 
+ON (CNT.shortname = CC.shortname)
